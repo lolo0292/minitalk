@@ -6,7 +6,7 @@
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:31:59 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/02/06 13:44:03 by lleichtn         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:36:54 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	send_char(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(1000);
 		bit_pos++;
 	}
 }

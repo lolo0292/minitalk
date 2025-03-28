@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:47:15 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:39:54 by lleichtn         ###   ########.fr       */
+/*   Created: 2024/11/12 12:08:39 by lleichtn          #+#    #+#             */
+/*   Updated: 2025/02/11 12:56:07 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-char	*ft_strjoin_char(char *s, char c)
+// checks if it is ascii
+int	ft_isascii(int c)
 {
-	int		len;
-	char	*new;
-	int		i;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	new = malloc(len + 2);
-	if (!new)
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		new[i] = s[i];
-	new[i++] = c;
-	new[i] = '\0';
-	free(s);
-	return (new);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

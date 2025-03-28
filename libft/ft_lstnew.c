@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:47:15 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:39:54 by lleichtn         ###   ########.fr       */
+/*   Created: 2024/11/19 16:55:02 by lleichtn          #+#    #+#             */
+/*   Updated: 2025/02/11 12:56:07 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-char	*ft_strjoin_char(char *s, char c)
+// init var content and next
+t_list	*ft_lstnew(void *content)
 {
-	int		len;
-	char	*new;
-	int		i;
+	t_list	*r;
 
-	len = 0;
-	while (s && s[len])
-		len++;
-	new = malloc(len + 2);
-	if (!new)
+	r = malloc(sizeof(t_list));
+	if (!r)
 		return (NULL);
-	i = -1;
-	while (++i < len)
-		new[i] = s[i];
-	new[i++] = c;
-	new[i] = '\0';
-	free(s);
-	return (new);
+	r->content = content;
+	r->next = NULL;
+	return (r);
 }

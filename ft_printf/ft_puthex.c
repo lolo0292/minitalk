@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:47:15 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:39:54 by lleichtn         ###   ########.fr       */
+/*   Created: 2024/11/22 11:27:20 by lleichtn          #+#    #+#             */
+/*   Updated: 2024/11/25 15:42:00 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-char	*ft_strjoin_char(char *s, char c)
+// Function to print a number in hexadecimal format
+int	ft_puthex(unsigned long n, char format)
 {
 	int		len;
-	char	*new;
-	int		i;
+	char	*hex;
 
 	len = 0;
-	while (s && s[len])
-		len++;
-	new = malloc(len + 2);
-	if (!new)
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		new[i] = s[i];
-	new[i++] = c;
-	new[i] = '\0';
-	free(s);
-	return (new);
+	if (format == 'x')
+		hex = "0123456789abcdef";
+	if (format == 'X')
+		hex = "0123456789ABCDEF";
+	if (n >= 16)
+		len += ft_puthex(n / 16, format);
+	len += ft_putchar(hex[n % 16]);
+	return (len);
 }

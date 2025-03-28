@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:47:15 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:39:54 by lleichtn         ###   ########.fr       */
+/*   Created: 2024/11/12 12:50:15 by lleichtn          #+#    #+#             */
+/*   Updated: 2025/02/11 12:56:07 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-char	*ft_strjoin_char(char *s, char c)
+// copy n bytes of mem from src to mem dest
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		len;
-	char	*new;
-	int		i;
+	size_t	i;
 
-	len = 0;
-	while (s && s[len])
-		len++;
-	new = malloc(len + 2);
-	if (!new)
+	if (!dest && !src)
 		return (NULL);
-	i = -1;
-	while (++i < len)
-		new[i] = s[i];
-	new[i++] = c;
-	new[i] = '\0';
-	free(s);
-	return (new);
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dest);
 }

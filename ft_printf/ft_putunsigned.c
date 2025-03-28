@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleichtn <lleichtn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 16:47:15 by lleichtn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:39:54 by lleichtn         ###   ########.fr       */
+/*   Created: 2024/11/22 11:26:19 by lleichtn          #+#    #+#             */
+/*   Updated: 2024/11/22 12:01:59 by lleichtn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_printf.h"
 
-char	*ft_strjoin_char(char *s, char c)
+// Function to print an unsigned integer
+int	ft_putunsigned(unsigned int n)
 {
 	int		len;
-	char	*new;
-	int		i;
+	char	c;
 
 	len = 0;
-	while (s && s[len])
-		len++;
-	new = malloc(len + 2);
-	if (!new)
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		new[i] = s[i];
-	new[i++] = c;
-	new[i] = '\0';
-	free(s);
-	return (new);
+	if (n >= 10)
+		len += ft_putunsigned(n / 10);
+	c = (n % 10) + '0';
+	len += ft_putchar(c);
+	return (len);
 }
